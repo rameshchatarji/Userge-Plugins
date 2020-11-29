@@ -65,23 +65,23 @@ async def draw_meme_text(image_path, text):
     img = Image.open(image_path)
     os.remove(image_path)
     i_width, i_height = img.size
-    m_font = ImageFont.truetype("resources/Muro.ttf", int((80 / 640) * i_width))
+    m_font = ImageFont.truetype("resources/Muro.ttf", int((100 / 640) * i_width))
     if ";" in text:
         upper_text, lower_text = text.split(";")
     else:
         upper_text = text
         lower_text = ''
     draw = ImageDraw.Draw(img)
-    current_h, pad = 25, 10
+    current_h, pad = 25, 25
     if upper_text:
-        for u_text in textwrap.wrap(upper_text, width=15):
+        for u_text in textwrap.wrap(upper_text, width=20):
             u_width, u_height = draw.textsize(u_text, font=m_font)
 
-            draw.text(xy=(((i_width - u_width) / 2) - 5, int((current_h / 640)*i_width)),
+            draw.text(xy=(((i_width - u_width) / 2) - 3, int((current_h / 640)*i_width)),
                       text=u_text, font=m_font, fill=(0, 0, 0))
-            draw.text(xy=(((i_width - u_width) / 2) + 5, int((current_h / 640)*i_width)),
+            draw.text(xy=(((i_width - u_width) / 2) + 3, int((current_h / 640)*i_width)),
                       text=u_text, font=m_font, fill=(0, 0, 0))
-            draw.text(xy=((i_width - u_width) / 2, int(((current_h / 640)*i_width)) - 5),
+            draw.text(xy=((i_width - u_width) / 2, int(((current_h / 640)*i_width)) - 3),
                       text=u_text, font=m_font, fill=(0, 0, 0))
             draw.text(xy=(((i_width - u_width) / 2), int(((current_h / 640)*i_width)) + 2),
                       text=u_text, font=m_font, fill=(0, 0, 0))
@@ -94,13 +94,13 @@ async def draw_meme_text(image_path, text):
             u_width, u_height = draw.textsize(l_text, font=m_font)
 
             draw.text(
-                xy=(((i_width - u_width) / 2) - 5, i_height - u_height - int((20 / 640)*i_width)),
+                xy=(((i_width - u_width) / 2) - 3, i_height - u_height - int((20 / 640)*i_width)),
                 text=l_text, font=m_font, fill=(0, 0, 0))
             draw.text(
-                xy=(((i_width - u_width) / 2) + 5, i_height - u_height - int((20 / 640)*i_width)),
+                xy=(((i_width - u_width) / 2) + 3, i_height - u_height - int((20 / 640)*i_width)),
                 text=l_text, font=m_font, fill=(0, 0, 0))
             draw.text(
-                xy=((i_width - u_width) / 2, (i_height - u_height - int((20 / 640)*i_width)) - 5),
+                xy=((i_width - u_width) / 2, (i_height - u_height - int((20 / 640)*i_width)) - 3),
                 text=l_text, font=m_font, fill=(0, 0, 0))
             draw.text(
                 xy=((i_width - u_width) / 2, (i_height - u_height - int((20 / 640)*i_width)) + 2),
