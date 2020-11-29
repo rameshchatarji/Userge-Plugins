@@ -72,9 +72,9 @@ async def draw_meme_text(image_path, text):
         upper_text = text
         lower_text = ''
     draw = ImageDraw.Draw(img)
-    current_h, pad = 25, 25
+    current_h, pad = 30, 25
     if upper_text:
-        for u_text in textwrap.wrap(upper_text, width=20):
+        for u_text in textwrap.wrap(upper_text, width=15):
             u_width, u_height = draw.textsize(u_text, font=m_font)
 
             draw.text(xy=(((i_width - u_width) / 2) - 3, int((current_h / 640)*i_width)),
@@ -90,7 +90,7 @@ async def draw_meme_text(image_path, text):
                       text=u_text, font=m_font, fill=(255, 255, 255))
             current_h += u_height + pad
     if lower_text:
-        for l_text in textwrap.wrap(lower_text, width=15):
+        for l_text in textwrap.wrap(lower_text, width=16):
             u_width, u_height = draw.textsize(l_text, font=m_font)
 
             draw.text(
